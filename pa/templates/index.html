@@ -1,54 +1,21 @@
-<!doctype html>
-<html lang="en">
-  <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+{% extends "base.html" %}
 
-  </head>
-  <body>
-    <h1>Welcome to my page <span class="badge badge-secondary">Custom</span></h1>
-    <a class="btn btn-primary" href="#" role="button">Link</a>
-        <input class="btn btn-primary" type="button" value="Input">
-        <input class="btn btn-primary" type="submit" value="Submit">
-        <input class="btn btn-primary" type="reset" value="Reset">
-        <table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Proffesion</th>
-        </tr>
-    </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Ivan</td>
-      <td>Ivanov</td>
-      <td>Engeneer</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Petr</td>
-      <td>Petrov</td>
-      <td>Student</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Ivan</td>
-      <td>Vasiliev</td>
-      <td>Actor</td>
-    </tr>
-  </tbody>
-
-    </table>
-
-    <table class="table">
-    <thead class="thead-light">
-
-    </tbody>
-    </table>
-  </body>
-</html>
+{% block content %}
+<div class="row">
+    {% for product in products %}
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <img src="/media/{{ product.image }}" style="max-width: 200px;">
+              <div class="caption">
+                <h3>{{ product.name }}</h3>
+                <p>
+                    {{ product.description }}
+                    <br>
+                    <b>${{ product.price }}</b>
+                </p>
+              </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
