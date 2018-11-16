@@ -18,13 +18,14 @@ from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-from MyWebPage.views import Home
+from MyWebPage.views import Home, BrandView
 
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', Home.as_view()),
+    path('brand_type/<int:brand_type_id>/', BrandView.as_view(), name='brand_type')
 ]
 
 if settings.DEBUG:

@@ -65,7 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'MyWebPage.context_processor.trade_marks'
+                'MyWebPage.context_processor.brand_types'
             ],
         },
     },

@@ -13,11 +13,9 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="">DEZENT</a>
-                <a class="dropdown-item" href="2">ADVANTI</a>
-                <a class="dropdown-item" href="3">BBS</a>
-                <a class="dropdown-item" href="4">AEZ</a>
-                <a class="dropdown-item" href="5">VOSSEN</a>
+                {% for type in brand_types %}
+                    <li class="dropdown-item"><a href="{% url 'brand_type' type.id %}">{{type.name}}</a></li></li>
+                {% endfor %}
             </div>
         </div>
         <div class="container-fluid">
@@ -27,5 +25,4 @@
         </div>
     </body>
 </html>
-
 

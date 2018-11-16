@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Mark(models.Model):
+class BrandType(models.Model):
     name = models.CharField(max_length=255)
 
     class Meta:
@@ -18,7 +18,7 @@ class Products(models.Model):
     description = models.TextField()
     count = models.PositiveIntegerField()
     image = models.ImageField(upload_to='products')
-    trade_mark = models.ForeignKey(Mark, on_delete=models.CASCADE)
+    brand_type = models.ForeignKey(BrandType, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Модель'

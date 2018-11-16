@@ -1,5 +1,6 @@
-from django.views.generic import TemplateView
-from MyWebPage.models import Products
+from django.views.generic import TemplateView, ListView
+from MyWebPage.models import Products, BrandType
+from django.shortcuts import get_object_or_404
 
 
 
@@ -13,16 +14,11 @@ class Home(TemplateView):
         return context
 
 
-#class MarkView(ListView):
-#    template_name = 'trade_mark.html'
-#    model = Products
-#
-#    def get_queryset(self):
-#        # trade_mark = TradeMark.objects.get(id=self.kwargs['trade_mark_id'])
-#        trade_mark = get_object_or_404(Mark, id=self.kwargs['trade_mark_id'])
-#        queryset = self.model.objects.filter(trade_mark=trade_mark)
-        # queryset = self.model.objects.filter(
-        #     trade_mark__id=self.kwargs['trade_mark_id'],
-        #     count__gt=0
-        # )
-#        return queryset
+class BrandView(ListView):
+    template_name = 'brand_type.html'
+    model = Products
+
+    def get_queryset(self):
+        brand_type = get_object_or_404(BrandType, id=self.kwargs['brand_type_id'])
+        queryset = self.model.objects.filter(brand_type=brand_type)
+        return queryset
