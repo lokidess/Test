@@ -1,4 +1,5 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, FormView
+from MyWebPage.forms import RegisterForm
 from MyWebPage.models import Products, BrandType
 from django.shortcuts import get_object_or_404
 
@@ -22,3 +23,13 @@ class BrandView(ListView):
         brand_type = get_object_or_404(BrandType, id=self.kwargs['brand_type_id'])
         queryset = self.model.objects.filter(brand_type=brand_type)
         return queryset
+
+
+class Register(FormView):
+    template_name = 'auth/registration.html'
+    form_class = RegisterForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        form.save()
+        return super(Register, self).form_valid(form)

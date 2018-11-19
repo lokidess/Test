@@ -18,14 +18,16 @@ from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-from MyWebPage.views import Home, BrandView
+from MyWebPage.views import Home, BrandView, Register
 
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', Home.as_view()),
-    path('brand_type/<int:brand_type_id>/', BrandView.as_view(), name='brand_type')
+    url(r'^$', Home.as_view(), name="home"),
+    path('brand_type/<int:brand_type_id>/', BrandView.as_view(), name='brand_type'),
+    path('registration/', Register.as_view(), name='registration'),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:
@@ -39,3 +41,4 @@ if settings.DEBUG:
     ] + urlpatterns
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
