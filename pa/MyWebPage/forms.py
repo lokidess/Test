@@ -14,14 +14,12 @@ class RegisterForm(forms.ModelForm):
         password = self.cleaned_data['password']
         confirm_password = self.cleaned_data['confirm_password']
         if password != confirm_password:
-            raise forms.ValidationError('Олень! Пароль норм введи')
+            raise forms.ValidationError('Неверный пароль')
         return self.cleaned_data
     class Meta:
         model = User
         fields = (
-            'username',
             'first_name',
-            'last_name',
             'email',
             'password'
         )
